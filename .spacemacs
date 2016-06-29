@@ -32,7 +32,7 @@
           git-gutter-use-fringe nil)
      syntax-checking
      themes-megapack
-
+     php
      c-c++
      clojure
      csharp
@@ -40,7 +40,6 @@
      html
      javascript
      markdown
-     php
      python
      ruby
      shell-scripts
@@ -63,6 +62,7 @@
    flim
    w3m
    pomodoro
+   langtool
    )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(
@@ -260,7 +260,7 @@ layers configuration."
   (setq message-directory "~/gmail")
 
   ;; Web-mode setting
-
+  (require 'php-mode)
   (require 'web-mode)
   (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -272,7 +272,7 @@ layers configuration."
 
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
   (setq web-mode-engines-alist
-        '(("php"    . "\\.php\\'")
+        '(("php"    . "\\.phtml\\'")
           ("blade"  . "\\.blade\\."))
         )
   ;; Set w3m viewing html email file
@@ -280,6 +280,9 @@ layers configuration."
   ;; Pomodoro timer
   (require 'pomodoro)
   (pomodoro-add-to-mode-line)
+  (require 'langtool)
+  (setq langtool-java-classpath
+        "/usr/local/Cellar/languagetool/3.2:/usr/local/Cellar/languagetool/3.2/libexec/*")
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
